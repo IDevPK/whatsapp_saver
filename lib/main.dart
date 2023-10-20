@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:whatsapp_saver/module/dataModule.dart';
 import './screens/index.dart';
 
+//Starting point
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
@@ -26,14 +27,11 @@ class WhatsAppSaver extends StatelessWidget {
         brightness: Brightness.dark,
         highlightColor: Colors.yellow,
         primarySwatch: Colors.teal,
-
       ),
-
       home: FutureBuilder(
         future: dataModule.storagePermissionChecker,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-
             if (snapshot.data == 1) {
               dataModule.permissionsForInitServices = true;
               // dataModule.initServices();
@@ -61,7 +59,7 @@ class WhatsAppSaver extends StatelessWidget {
                         child: Text(
                           'Grant Storage Permissions',
                           style: GoogleFonts.timmana(
-                            fontSize: 25,
+                              fontSize: 25,
                               textStyle: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -75,12 +73,15 @@ class WhatsAppSaver extends StatelessWidget {
                 appBar: AppBar(),
                 body: Center(
                   child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(),
-                    Text('Gathering Information....',style: GoogleFonts.timmana(fontSize: 20),)
-                  ],
-              ),
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                      Text(
+                        'Gathering Information....',
+                        style: GoogleFonts.timmana(fontSize: 20),
+                      )
+                    ],
+                  ),
                 ));
           }
         },
